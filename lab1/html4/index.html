@@ -8,7 +8,7 @@
   </head>
   <body bgcolor="red">
     <form action="https://www.olx.ro">
-      <div style="margin-left: 100px;">
+      <div>
         <table border>
           <tr>
             <td colspan="3" align="center">
@@ -41,17 +41,17 @@
             </td>
           </tr>
           <tr>
-            <td>
-              <label>An fabricatie</label><br>
-              <input type="text">
-            </td>
-            <td colspan="2">
+            <td colspan="3">
               <label>Alte detalii</label><br>
               <textarea cols="30" rows="5"></textarea>
             </td>
           </tr>
           <tr>
-            <td colspan="2">
+            <td>
+              <label>An fabricatie</label><br>
+              <input type="text">
+            </td>
+            <td>
               <label><b>Tip carburant</b></label>
               <select size="4" multiple>
                 <option selected>Benzină</option>
@@ -132,13 +132,13 @@
                   </td>
                 </tr>
               </table>
-              <input type="checkbox" id="vehicle1" value="2L" checked>
+              <input type="radio" id="vehicle1" value="2L" checked name="engineCapacity">
               <label for="vehicle1">2L</label><br>
-              <input type="checkbox" id="vehicle2" value="3L">
+              <input type="radio" id="vehicle2" value="3L" name="engineCapacity">
               <label for="vehicle2">3L</label><br>
-              <input type="checkbox" id="vehicle3" value="4L">
+              <input type="radio" id="vehicle3" value="4L" name="engineCapacity">
               <label for="vehicle3">4L</label><br>
-              <input type="checkbox" id="vehicle4" value="Other">
+              <input type="radio" id="vehicle4" value="Other" name="engineCapacity">
               <label for="vehicle4">Alta</label><br>
             </td>
           </tr>
@@ -152,11 +152,11 @@
                 <label for="hp">Căluți putere: </label>
                 <input id="hp" type="text">
                 <br>
-                <label for="oprit">Can't touch this</label>
-                <input id="oprit" type="text" disabled>
+                <label for="oprit">Loc vanzare</label>
+                <input id="oprit" type="text" value="Romania" disabled>
                 <br>
-                <label for="citit">Just read</label>
-                <input id="citit" type="text" readonly value="I AM INEVITABLE">
+                <label for="citit">Varsta minima vanzator</label>
+                <input id="citit" type="text" readonly value="18 ani">
               </fieldset>
             </td>
           </tr>
