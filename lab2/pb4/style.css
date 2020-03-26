@@ -3,7 +3,6 @@
 .pic {
   display: flex;
   flex-direction: row;
-  counter-reset: var(--count);
   width: fit-content;
 }
 
@@ -17,10 +16,6 @@
 
 .pic img:hover {
   background-position: calc(var(--count) * -84px) 0;
-}
-
-.pic img::after {
-  counter-increment: var(--count);
 }
 
 #fb {

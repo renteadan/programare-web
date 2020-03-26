@@ -1,0 +1,41 @@
+.App {
+  font-family: sans-serif;
+}
+
+.dialog {
+  max-width: 600px;
+}
+
+.dialog > li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  background-image: url(speech.png);
+  background-repeat: no-repeat;
+  background-position: right -35px top 0;
+  background-size: 90% 130%;
+  text-align: center;
+  padding-bottom: 10%;
+  padding-top: 10%;
+}
+
+.dialog > .alice:before {
+  content: "";
+  display: inline-block;
+  min-height: 160px;
+  min-width: 140px;
+  background-image: url("girl.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.dialog > .bob:before {
+  content: "";
+  display: inline-block;
+  min-height: 160px;
+  min-width: 140px;
+  background-image: url(boy.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
