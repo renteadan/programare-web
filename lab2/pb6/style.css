@@ -1,0 +1,35 @@
+.text-input p {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.text-input input {
+  display: inline-block;
+  background-image: url('patrat.png');
+  background-size: 20px;
+  border: none;
+  font-family: monospace;
+  font-size: 13;
+  letter-spacing: 13px;
+  height: 18px;
+  width: 400px;
+}
+
+.number-input p {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.number-input input {
+  display: inline-block;
+  background-image: url('patrat.png');
+  background-size: 20px;
+  border: none;
+  font-family: monospace;
+  font-size: 13;
+  letter-spacing: 13px;
+  height: 18px;
+  width: 280px;
+}

@@ -1,0 +1,30 @@
+
+
+.main {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  width: 400px;
+  height: fit-content;
+  background-color: yellow;
+}
+
+.portret {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.portret img {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+
+.portret p {
+  margin-left: 10px;
+  display: inline-block;
+}

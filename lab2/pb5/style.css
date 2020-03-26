@@ -1,0 +1,29 @@
+
+
+.main {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  width: 580px;
+  height: 650px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.portret {
+  background-color: cyan;
+  width: fit-content;
+  height: fit-content;
+  padding: 15px;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.portret img {
+  width: 200px;
+  height: 200px;
+}
+
+.portret p {
+  text-align: center;
+}
