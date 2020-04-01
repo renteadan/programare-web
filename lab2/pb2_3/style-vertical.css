@@ -8,9 +8,9 @@
 }
 
 .header-container {
-  display: flex;
   align-items: center;
   height: 100px;
+  min-height: 100px;
   background-color: red;
 }
 
@@ -59,6 +59,7 @@ header {
 
 .footer-container {
   height: 60px;
+  min-height: 60px;
   background-color: pink;
 }
 
