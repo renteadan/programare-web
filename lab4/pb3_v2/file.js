@@ -49,7 +49,7 @@ let current;
 let last = [];
 
 function turn(e) {
-  if(this.isMatch)
+  if(this.isMatch || this === current)
     return;
   this.appendChild(this.frontImg);
   if(!current) {
