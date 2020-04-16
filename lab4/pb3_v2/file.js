@@ -1,33 +1,54 @@
 'use strict';
+let arr = [];
+let imgarr = [];
 
 function init() {
   const points = document.getElementById('points');
   points.value = 0;
   points.textContent = `Number of moves: ${points.value}`;
-  const cards = document.getElementsByClassName('card');
-  const numb = cards.length / 2;
-  let arr = [];
-  for(let i=1;i<=numb;i++) {
-    arr.push({
+  for(let i=1;i<=6;i++) {
+    imgarr.push({
       image: `images/fruit${i}.jpg`,
       val: i
     });
-    arr.push({
+    imgarr.push({
       image: `images/fruit${i}.jpg`,
       val: i
     });
   }
-  arr = shuffle(arr);
+  imgarr = shuffle(imgarr);
+  renderTable();
+}
+
+function renderTable() {
+  const table = document.getElementById('tableboard');
+  while (table.firstChild) {
+    table.removeChild(table.lastChild);
+  }
   let index = 0;
-  for(const item of cards) {
-    item.value = arr[index].val;
-    const img = document.createElement('img');
-    img.src = arr[index].image;
-    item.frontImg = img;
-    img.setAttribute('height', '70px');
-    img.setAttribute('width', '70px');
-    index++;
-    item.onclick = turn;
+  for(let i=0;i<3;i++) {
+    const trow = document.createElement('tr');
+    table.appendChild(trow);
+    arr[i] = [];
+    for(let j=0;j<4;j++) {
+      const item = document.createElement('td');
+      const img = document.createElement('img');
+      img.src = imgarr[index].image;
+      img.className = 'card';
+      img.hidden = true;
+
+      item.frontImg = img;
+      item.isMatch = false;
+      item.className = 'card';
+      item.value = imgarr[index].val;
+      item.onclick = turn;
+      item.pos = [i, j];
+      item.appendChild(img);
+
+      arr[i].push(item);
+      trow.appendChild(item);
+      index++;
+    }
   }
 }
 
@@ -45,26 +66,27 @@ function incrementPoints() {
   points.textContent = `Number of moves: ${points.value}`;
 }
 
-let current;
-let last = [];
+let last;
 
 function turn(e) {
-  if(this.isMatch || this === current)
+  if(this.isMatch || this.firstChild.hidden === false)
     return;
-  this.appendChild(this.frontImg);
-  if(!current) {
-    last.forEach(item => item.removeChild(item.frontImg));
-    last = []
-    current = this;
-  } else {
-    if(current.value === this.value) {
-      current.isMatch = true;
+  this.firstChild.hidden = false;
+  if(last) {
+    const lastTd = arr[last[0]][last[1]];
+    if(lastTd.value === this.value) {
       this.isMatch = true;
+      lastTd.isMatch = true;
     } else {
-      last.push(this, current);
+      setTimeout(() => {
+        this.firstChild.hidden = true;
+        lastTd.firstChild.hidden = true;
+      }, 2000);
     }
-    current = null;
+    last = null;
     incrementPoints();
+  } else {
+    last = this.pos;
   }
 }
 
