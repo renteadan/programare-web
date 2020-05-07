@@ -1,0 +1,10 @@
+
+input {
+  margin: 5px;
+}
+
+.wrong {
+  border: 2px;
+  border-style: solid;
+  border-color: red;
+}
