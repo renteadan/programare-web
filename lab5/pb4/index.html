@@ -8,7 +8,7 @@
 </head>
 <body>
   <table>
-    <tr>
+    <tr class='customHeader'>
       <th value='name'>
         Name
       </th>
@@ -19,11 +19,31 @@
         Qnt
       </th>
     </tr>
-    <tr class='customItem' name='Apple' price=3 qnt=5>
+    <tr class='customItem' data-qnt=5  data-price=3 data-name='Apple'>
     </tr>
-    <tr class='customItem' name='Citrus' price=7 qnt=1>
+    <tr class='customItem' data-qnt=1 data-price=7 data-name='Citrus' >
     </tr>
-    <tr class='customItem' name='Bannana' price=10 qnt=2>
+    <tr class='customItem'  data-qnt=2  data-price=10 data-name='Bannana'>
+    </tr>
+  </table>
+
+  <table>
+    <tr class='customHeader'>
+      <th value='make'>
+        Make
+      </th>
+      <th value='model'>
+        Model
+      </th>
+      <th value='price'>
+        Price
+      </th>
+    </tr>
+    <tr class='customItem' data-price=5000 data-model='Focus' data-make='Ford'>
+    </tr>
+    <tr class='customItem' data-price=1000 data-model='Highlander' data-make='Toyota'>
+    </tr>
+    <tr class='customItem' data-price=2000 data-model='M3' data-make='BMW' >
     </tr>
   </table>
 
