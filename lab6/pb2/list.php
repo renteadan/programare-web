@@ -21,7 +21,14 @@ $count = $conn->query($sql2);
 $conn->close();
 $result->data_seek(0);
 $count->data_seek(0);
-echo json_encode($count->fetch_all(1));
-echo '||';
-echo json_encode($result->fetch_all(1));
+$response = array();
+$response[]=$count->fetch_assoc();
+// echo json_encode($count->fetch_assoc());
+// echo '||';
+while($row = $result->fetch_assoc()) {
+  // echo json_encode($row);
+  // echo '==';
+  $response[]=$row;
+}
+echo json_encode($response);
 ?>

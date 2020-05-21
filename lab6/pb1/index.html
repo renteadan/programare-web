@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>
-    Pb4
+    Pb1
   </title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
@@ -9,7 +9,7 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            const results = JSON.parse(this.responseText);
+            const results =  JSON.parse(this.responseText);
             const list = $('#plecari');
             list.children().remove();
             results.forEach(res => {
@@ -33,7 +33,7 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            const results = JSON.parse(this.responseText);
+            const results =  JSON.parse(this.responseText);
             const list = $('#sosiri');
             list.children().remove();
             results.forEach(res => {

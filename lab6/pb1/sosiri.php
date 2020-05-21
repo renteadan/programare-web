@@ -17,5 +17,9 @@ $sql = "SELECT * FROM plecari where plecare = '$plecare'" or die(mysql_error());
 $result = $conn->query($sql);
 $conn->close();
 $result->data_seek(0);
-echo json_encode($result->fetch_all(1))
+$response = array();
+while($row = $result->fetch_assoc()) {
+  $response[]=$row;
+}
+echo json_encode($response);
 ?>

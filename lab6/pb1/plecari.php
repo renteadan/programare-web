@@ -15,5 +15,9 @@ $sql = "SELECT * FROM plecari group by plecare";
 $result = $conn->query($sql);
 $conn->close();
 $result->data_seek(0);
-echo json_encode($result->fetch_all(1))
+$response = array();
+while($row = $result->fetch_assoc()) {
+  $response[]=$row;
+}
+echo json_encode($response);
 ?>

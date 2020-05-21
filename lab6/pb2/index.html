@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
   <title>
-    Pb4
+    Pb2
   </title>
   <link rel="stylesheet" href="style.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -22,9 +22,9 @@
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-          const arrs = this.responseText.split('||');
-          const results = JSON.parse(arrs[1]);
-          const [count] = JSON.parse(arrs[0]);
+          const result = JSON.parse(this.responseText);
+          const count = result[0];
+          const results = result.slice(1);
           bd.data('maxCount', count.c);
           const list = $('#lista');
           list.children('tr').remove();
