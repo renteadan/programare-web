@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<head>
+  <title>
+    Pb4
+  </title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    function showList() {
+      const bd = $('body');
+      const {skip, limit, maxCount} = bd.data();
+      if(skip === 0) {
+        $('#prevButton').attr('disabled', true);
+      } else {
+        $('#prevButton').attr('disabled', false);
+      }
+      if(skip + limit >= maxCount) {
+        $('#nextButton').attr('disabled', true);
+      } else {
+        $('#nextButton').attr('disabled', false);
+      }
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          const arrs = this.responseText.split('||');
+          const results = JSON.parse(arrs[1]);
+          const [count] = JSON.parse(arrs[0]);
+          bd.data('maxCount', count.c);
+          const list = $('#lista');
+          list.children('tr').remove();
+          results.forEach(res => {
+            const tr = $('<tr>');
+            const td1 = $('<td>');
+            td1.text(res.nume);
+            const td2 = $('<td>');
+            td2.text(res.prenume);
+            const td3 = $('<td>');
+            td3.text(res.telefon);
+            const td4 = $('<td>');
+            td4.text(res.email);
+            tr.append([td1, td2, td3, td4]);
+            list.append(tr);
+          })
+        }
+      };
+      xmlhttp.open("GET", `list.php?skip=${skip}&limit=${limit}`, true);
+      xmlhttp.setRequestHeader('Content-type', 'text/plain');
+      xmlhttp.send();
+    }
+
+    function setData() {
+      const bd = $('body');
+      bd.data('skip', 0);
+      bd.data('limit', 3);
+      showList();
+    }
+
+    function next() {
+      const bd = $('body');
+      const {skip, limit, maxCount} = bd.data();
+      const newSkip = Math.floor(Math.min(skip + limit, maxCount % limit === 0 ? maxCount - limit : maxCount - maxCount % limit));
+      bd.data('skip', newSkip);
+      showList();
+    }
+
+    function prev() {
+      const bd = $('body');
+      const {skip, limit} = bd.data();
+      const newSkip = Math.max(0, skip - limit);
+      bd.data('skip', newSkip);
+      showList();
+    }
+  </script>
+</head>
+<body onload="setData()">
+  <table size='3' style="border-style:solid;">
+    <thead>
+      <tr>
+        <th>
+          Nume
+        </th>
+        <th>
+          Prenume
+        </th>
+        <th>
+          Telefon
+        </th>
+        <th>
+          Email
+        </th>
+      </tr>
+    </thead>
+    <tbody id="lista">
+
+    </tbody>
+  </table>
+  <button onclick="prev()" id='prevButton'>
+    Previous
+  </button>
+  <button onclick="next()" id='nextButton'>
+    Next
+  </button>
+</body>

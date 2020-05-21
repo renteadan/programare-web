@@ -1,0 +1,14 @@
+
+td {
+  border-style: solid;
+  border-width: 2px;
+}
+
+tr {
+  height: fit-content;
+}
+
+table {
+  border-spacing: 0px;
+  margin: 100px;
+}

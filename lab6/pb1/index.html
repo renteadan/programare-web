@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+  <title>
+    Pb4
+  </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    function showHint() {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const results = JSON.parse(this.responseText);
+            const list = $('#plecari');
+            list.children().remove();
+            results.forEach(res => {
+              const tr = $('<option>');
+              tr.text(res.plecare);
+              tr.data(res);
+              tr.click(showDest);
+              list.append(tr);
+            })
+          }
+        };
+        xmlhttp.open("GET", "plecari.php", true);
+        xmlhttp.setRequestHeader('Content-type', 'text/plain');
+        xmlhttp.send();
+      }
+    </script>
+    <script>
+      function showDest() {
+        const opt = $(this);
+        const plecare = opt.data().plecare;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const results = JSON.parse(this.responseText);
+            const list = $('#sosiri');
+            list.children().remove();
+            results.forEach(res => {
+              const tr = $('<option>');
+              tr.text(res.sosire);
+              tr.data(res);
+              list.append(tr);
+            })
+          }
+        };
+        xmlhttp.open("GET", `sosiri.php?plecare=${plecare}`, true);
+        xmlhttp.setRequestHeader('Content-type', 'text/plain');
+        xmlhttp.send();
+      }
+    </script>
+</head>
+<body onload="showHint()">
+  <select id="plecari" size='4'>
+  </select>
+  <select id="sosiri" size='4'> 
+  </select>
+</body>
